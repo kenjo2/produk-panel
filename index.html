@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Pterodactyl - Private By Kenn</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+            scroll-behavior: smooth;
+            color: #1a202c;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.025em;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: #64748b;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-section {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .features-section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a202c;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 24px;
+            border-radius: 16px;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            background: white;
+            border-color: #cbd5e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        .feature-item p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e0;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2d3748, #4a5568);
+        }
+
+        .popular {
+            border: 2px solid #3182ce;
+            position: relative;
+        }
+
+        .popular::before {
+            background: linear-gradient(90deg, #3182ce, #2c5aa0);
+        }
+
+        .popular::after {
+            content: 'TERPOPULER';
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            background: linear-gradient(135deg, #3182ce, #2c5aa0);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .plan-name {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .features li {
+            padding: 10px 0;
+            color: #4a5568;
+            position: relative;
+            padding-left: 28px;
+            font-size: 0.95rem;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #38a169;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .buy-btn, .cs-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            letter-spacing: 0.025em;
+            border: 2px solid transparent;
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            color: white;
+        }
+
+        .cs-btn {
+            background: linear-gradient(135deg, #3182ce, #2c5aa0);
+            color: white;
+        }
+
+        .buy-btn:hover {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
+        }
+
+        .cs-btn:hover {
+            background: linear-gradient(135deg, #2c5aa0, #3182ce);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefits-section h2 {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #1a202c;
+        }
+
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        /* Reseller Section */
+        .reseller-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 48px;
+            color: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .reseller-section h2 {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .reseller-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .reseller-benefits {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .reseller-cta {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 32px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .reseller-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .reseller-btn:hover {
+            background: #f7fafc;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            text-align: center;
+            color: #64748b;
+            margin-top: 60px;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-card {
+                padding: 24px;
+            }
+
+            .reseller-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .features-section, .benefits-section, .reseller-section {
+                padding: 32px 24px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Panel Pterodactyl Private By Kenn</h1>
+            <p>Solusi panel private terpercaya & Cepat Anti intip</p>
+        </div>
+
+        <div class="features-section">
+            <h2>Mengapa Beli Disini?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">🔒</span>
+                    <h3>Panel Private</h3>
+                    <p>100% private & secure</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Performa Tinggi</h3>
+                    <p>Uptime 99.9%</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Setup Instan</h3>
+                    <p>Aktif dalam 5 menit</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💬</span>
+                    <h3>Support 24/7</h3>
+                    <p>Tim siap membantu</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="products-grid">
+            <!-- Paket 1GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 1gb</div>
+                <div class="price">Rp 2.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>1GB RAM</li>
+                    <li>40% CPU</li>
+                    <li>1GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    <li>Support Bot WhatsApp</li>
+                    <li>24/7 Support</li>
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 1gb (1GB RAM) - Rp 2.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 2GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 2gb</div>
+                <div class="price">Rp 3.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>2GB RAM</li>
+                    <li>60% CPU</li>
+                    <li>2GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    <li>Support Bot WhatsApp</li>
+                    <li>Garansi 15h</li>
+                    <li>24/7 Support</li>
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 2gb (2GB RAM) - Rp 3.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 3GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 3gb</div>
+                <div class="price">Rp 4.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>3GB RAM</li>
+                    <li>80% CPU</li>
+                    <li>3GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    <li>Support Multi Bot</li>
+                    <li>Garansi 15h</li>
+                    <li>24/7 Support</li>
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket private 3gb (3GB RAM) - Rp 4.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 4GB -->
+            <div class="product-card popular">
+                <div class="plan-name">Private 4gb</div>
+                <div class="price">Rp 5.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>4GB RAM</li>
+                    <li>100% CPU</li>
+                    <li>4GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    <li>Support Multi Bot</li>
+                    <li>Garansi 15h</li>
+                    
+                    <li>Free Setup</li>
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 4gb (4GB RAM) - Rp 5.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 5GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 5gb</div>
+                <div class="price">Rp 6.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>5GB RAM</li>
+                    <li>120% CPU</li>
+                    <li>5GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    <li>Support Multi Bot</li>
+                    <li>Garansi 15h</li>
+                    <li>Priority Support</li>
+                    <li>Free Setup</li>
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 5gb (5GB RAM) - Rp 6.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 6GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 6gb</div>
+                <div class="price">Rp 7.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>6GB RAM</li>
+                    <li>140% CPU</li>
+                    <li>6GB SSD Storage</li>
+                   
+                    <li>Panel Pterodactyl</li>
+                    <li>Support Multi Bot</li>
+                    <li>Garansi 15h</li>
+                    
+                    <li>Free Setup & Migration</li>
+                    
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 6gb (6GB RAM) - Rp 7.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 7GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 7gb</div>
+                <div class="price">Rp 8.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>7GB RAM</li>
+                    <li>160% CPU</li>
+                    <li>7GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    <li>Support Multi Bot</li>
+                    <li>Garansi 15h</li>
+                    
+                    <li>Free Setup & Migration</li>
+                    
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 7gb (7GB RAM) - Rp 8.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 8GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 8gb</div>
+                <div class="price">Rp 9.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>8GB RAM</li>
+                    <li>180% CPU</li>
+                    <li>8GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    
+                    <li>Garansi 15h</li>
+                    
+                    
+                    
+                    
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 8gb (8GB RAM) - Rp 9.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 9GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 9gb</div>
+                <div class="price">Rp 10.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>9GB RAM</li>
+                    <li>200% CPU</li>
+                    <li>9GB SSD Storage</li>
+                  
+                    <li>Panel Pterodactyl</li>
+                    
+                    <li>Garansi 15h</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 9gb (9GB RAM) - Rp 10.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket 10GB -->
+            <div class="product-card">
+                <div class="plan-name">Private 10gb</div>
+                <div class="price">Rp 11.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>10GB RAM</li>
+                    <li>220% CPU</li>
+                    <li>10GB SSD Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    
+                    <li>Garansi 15h</li>
+                   
+                    
+                    
+                    
+                    
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Private 10gb (10GB RAM) - Rp 11.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Paket Unlimited -->
+            <div class="product-card">
+                <div class="plan-name">Unlimited</div>
+                <div class="price">Rp 12.000 <span>/bulan</span></div>
+                <ul class="features">
+                    <li>Unlimited RAM</li>
+                    <li>Unlimited CPU</li>
+                    <li>Unlimited Storage</li>
+                    
+                    <li>Panel Pterodactyl</li>
+                    
+                    <li>Garansi 15h</li>
+                    <li>Premium Support</li>
+                    <li>Free Migration</li>
+                    <li>Custom Everything</li>
+                    
+                    <li>99.99% Uptime SLA</li>
+                </ul>
+                <div class="button-group">
+                    <a href="https://t.me/keannzyy?text=Halo, saya butuh bantuan customer service" class="cs-btn">Customer Service</a>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik dengan paket Unlimited - Rp 12.000/bulan" class="buy-btn">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="benefits-section">
+            <h2>Keuntungan Berlangganan</h2>
+            <div class="benefits-list">
+                ✅ Panel private 100% tidak bisa diintip orang lain<br>
+                ✅ Server dedicated dengan resource tidak dibagi<br>
+                ✅ Backup otomatis setiap hari untuk keamanan data<br>
+                ✅ Setup langsung aktif dalam 5 menit setelah bayar<br>
+                ✅ Support premium 24/7 via Telegram dengan respon cepat<br>
+                
+            </div>
+        </div>
+
+        <!-- Reseller Section -->
+        <div class="reseller-section">
+            <h2>💰 Program Reseller</h2>
+            <div class="reseller-content">
+                <div class="reseller-benefits">
+                    ✅ Bisa Jualan. panel<br>
+                    ✅ Untung asal niat<br>
+                    ✅ Panel dengan branding <br>
+                    ✅ Training lengkap dari A-Z dan tips marketing<br>
+                    ✅ Grup Telegram/WhatsApp eksklusif khusus reseller<br>
+                    ✅ Dashboard analytics
+                </div>
+                <div class="reseller-cta">
+                    <h3>🚀 Jadi Reseller?</h3>
+                    <p>Harga mulai 15.000 perbulan<br>Hingga 25.000 permanen</p>
+                    <a href="https://t.me/Kennvxy?text=Halo, saya tertarik untuk bergabung sebagai reseller panel Pterodactyl. Mohon info lengkapnya." class="reseller-btn">Gabung Reseller</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💬 Butuh konsultasi? Hubungi kami di Telegram untuk bantuan lebih lanjut</p>
+            <p>🚀 Garansi uptime 99.9% | Setup gratis untuk paket Pro ke atas</p>
+        </div>
+    </div>
+</body>
+</html>
